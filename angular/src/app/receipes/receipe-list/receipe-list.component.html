@@ -1,1 +1,19 @@
-<p>receipe-list works!</p>
+<div class="row mt-2">
+    <div class="col-lg-12">
+        <button class="btn btn-success">New Receipe</button>
+    </div>
+</div>
+<div class="row my-4">
+    <div class="col-lg-12">
+        <a href="#" class="list-group-item receipe-list clearfix" *ngFor = 'let item of receipeslist'>
+            <div class="float-lg-left">
+                <h3 class="list-group-item-heading">{{item.name}}</h3>
+                <p class="list-group-item-text">{{item.description}}</p>
+            </div>
+            <span class="float-lg-right">
+                <img [src]="item.urlPath" alt="some image" class="img-responsive receipe-img"/>
+            </span>
+        </a>
+        <app-receipe-item></app-receipe-item>
+    </div>
+</div>
