@@ -2,11 +2,11 @@
 <div class="row">
     <!--On the left hanbd side Receipe List-->
     <div class="col-lg-6">
-            <app-receipe-list></app-receipe-list>
+            <app-receipe-list (emitReceipe)='onDetailReceipt($event)'></app-receipe-list>
     </div>
 
     <!--On the left hanbd side Receipe Details-->
     <div class="col-lg-6">
-            <app-receipe-detail></app-receipe-detail>
+            <app-receipe-detail *ngIf="receipeDetail" [receipeDetail] = receipeDetail></app-receipe-detail>
     </div>
 </div>

@@ -1,0 +1,13 @@
+a.receipe-list{
+    &:hover, &:focus{
+        text-decoration: none;
+    }
+    h3{
+        font-size:1rem;
+        font-weight:bolder
+    }
+    .receipe-img{
+        max-height: 100px;
+        max-width: 100px;
+    }
+}

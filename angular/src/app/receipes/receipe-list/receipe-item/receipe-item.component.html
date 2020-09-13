@@ -1,1 +1,17 @@
-<p>receipe-item works!</p>
+<div class="row">
+    <div class="col-lg-12">
+        <a 
+          href="#" 
+          class="list-group-item receipe-list clearfix"
+          (click)="onSelcetReceipe(receipeEl)"
+          >
+            <div class="float-lg-left">
+                <h3 class="list-group-item-heading">{{receipeEl.name}}</h3>
+                <p class="list-group-item-text">{{receipeEl.description}}</p>
+            </div>
+            <span class="float-lg-right">
+                <img [src]="receipeEl.urlPath" alt="some image" class="img-responsive receipe-img"/>
+            </span>
+        </a>
+    </div>
+</div>

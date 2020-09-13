@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ReceipeModel } from '../receipes.model';
 
 @Component({
   selector: 'app-receipe-detail',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./receipe-detail.component.scss']
 })
 export class ReceipeDetailComponent implements OnInit {
-
+  @Input() receipeDetail: ReceipeModel
   constructor() { }
 
   ngOnInit(): void {

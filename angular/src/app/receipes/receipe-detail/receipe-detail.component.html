@@ -1,1 +1,9 @@
-<p>receipe-detail works!</p>
+<div class="row">
+    <div class="col-lg-12">
+        <h2>{{receipeDetail.name}}</h2>
+        <ul class="list-group-item">
+            <li class="list-item">{{receipeDetail.description | uppercase}}</li>
+            <li class="list-item"><img [src]="receipeDetail.urlPath" [alt]="receipeDetail.name" class="img-resonsive"></li>
+        </ul>
+    </div>
+</div>
