@@ -19,4 +19,8 @@ export class ShoppingListComponent implements OnInit {
     console.log(this.ingredientsList)
   }
 
+  onAddedIngredient(data){
+    this.ingredientsList.push(data);
+  }
+
 }

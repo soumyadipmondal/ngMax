@@ -6,6 +6,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  selectedItem:string='receipe';
   @Output('routing') route = new EventEmitter<string>();
   constructor() { }
 
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSelect(route){
+    this.selectedItem = route;
     this.route.emit(route);
   }
 
