@@ -1,9 +1,17 @@
 <div class="row">
+    <div class="col-lg-12 my-2 list-group-item">
+        <button class="btn btn-primary" (click)="onAddingIngredient()">Add to Ingredient</button>
+        <button class="btn btn-secondary ml-1">Edit Ingredient</button>
+        <button class="btn btn-danger ml-1">Delete Ingredient</button>
+    </div>
     <div class="col-lg-12">
         <h2>{{receipeDetail.name}}</h2>
         <ul class="list-group-item">
             <li class="list-item">{{receipeDetail.desc | uppercase}}</li>
             <li class="list-item"><img [src]="receipeDetail.urlPath" [alt]="receipeDetail.name" class="img-resonsive"></li>
+        </ul>
+        <ul class="list-group-item">
+            <li class="list-item" *ngFor="let ingredient of receipeDetail.ingredients">{{ingredient.name | uppercase}} ({{ingredient.amount}})</li>   
         </ul>
     </div>
 </div>

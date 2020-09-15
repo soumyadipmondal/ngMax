@@ -3,6 +3,7 @@ import { Subject, Observable, BehaviorSubject } from 'rxjs';
 
 import { ReceipeModel } from './receipes.model';
 import { IngredientsModel } from 'src/shared/ingredients.model';
+import { ShoppingService } from '../shopping-list/shopping.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class ReceipeService {
       new IngredientsModel('Ice cream', 10)
     ])
   ];
-  constructor() { }
+  constructor(private shoppingServ: ShoppingService) { }
 
   //get Receipe list
   getReceipe = () =>{
@@ -42,6 +43,13 @@ export class ReceipeService {
   getSelectedReceipe(){
     //console.log(this.subject.asObservable);
     return this.subject.asObservable();
+  }
+
+  addIngredientsToShoppingService(receipeData){
+    let  ingredientItem = receipeData.ingredients;
+    //console.log(ingredientItem);
+    
+    this.shoppingServ.addIngredients(ingredientItem);
   }
 
 }

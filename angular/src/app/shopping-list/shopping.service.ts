@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 })
 export class ShoppingService {
   subject = new Subject();
+  set = new Set();
   //Mock data
   private ingredientsList: IngredientsModel[] = [
     new IngredientsModel('Apple', 5),
@@ -26,5 +27,9 @@ export class ShoppingService {
   setIngredientItem(slctdIngre: IngredientsModel){
     this.ingredientsList.push(slctdIngre);
     this.subject.next(slctdIngre);
+  }
+
+  addIngredients(addIngredients: IngredientsModel[]){
+    addIngredients.map(item=>this.setIngredientItem(item));
   }
 }
