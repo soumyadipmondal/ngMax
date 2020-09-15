@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { ReceipeModel } from '../receipes.model'
+import { ReceipeService } from '../receipe.service';
 
 @Component({
   selector: 'app-receipe-list',
@@ -8,19 +9,17 @@ import { ReceipeModel } from '../receipes.model'
   styleUrls: ['./receipe-list.component.scss']
 })
 export class ReceipeListComponent implements OnInit {
-  @Output() emitReceipe = new EventEmitter<ReceipeModel>();
-  receipeslist: ReceipeModel[] = [
-    new ReceipeModel('The taste Receipe', 'I love to taste this', '../../../assets/images/receipe1.jpg'),
-    new ReceipeModel('The Burger Receipe', 'I love to taste this Burger', '../../../assets/images/receipe1.jpg')
-  ];
-  constructor() { }
+  /* @Output() emitReceipe = new EventEmitter<ReceipeModel>(); */
+  receipeslist: ReceipeModel[];
+  constructor(private _receipeServ: ReceipeService) { }
 
   ngOnInit(): void {
+    this.receipeslist = this._receipeServ.getReceipe();
     //console.log(this.receipeslist);
   }
 
-  onDetailReceipt(receiptData){
+  /* onDetailReceipt(receiptData){
     this.emitReceipe.emit(receiptData);
-  }
+  } */
 
 }

@@ -1,7 +1,7 @@
 <!-- Shopping List with Edit-->
 <div class="row">
     <div class="col-lg-10">
-        <app-shopping-edit (addIngredients) = onAddedIngredient($event)></app-shopping-edit>
+        <app-shopping-edit></app-shopping-edit>
         <hr>
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let item of ingredientsList">
@@ -10,3 +10,4 @@
         </ul>
     </div>
 </div>
+<!-- (addIngredients) = onAddedIngredient($event) -->

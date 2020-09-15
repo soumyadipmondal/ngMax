@@ -5,9 +5,10 @@
 </div>
 <div class="row my-4">
     <div class="col-lg-12">
-        <app-receipe-item (sendSelReceipe)='onDetailReceipt($event)'
+        <app-receipe-item
           *ngFor="let receipe of receipeslist"
           [receipeEl] = 'receipe'
           ></app-receipe-item>
     </div>
 </div>
+<!-- (sendSelReceipe)='onDetailReceipt($event)' -->

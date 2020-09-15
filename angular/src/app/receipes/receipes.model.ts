@@ -1,12 +1,16 @@
-export class ReceipeModel {
-    'name': string;
-    'description': string;
-    'urlPath' : string
+import { IngredientsModel } from 'src/shared/ingredients.model';
 
-    constructor(name, desc, imgPath){
-        this.name = name;
+export class ReceipeModel {
+    /* 'name': string;
+    'description': string;
+    'urlPath' : string;
+    'ingredients': IngredientsModel; */
+
+    constructor(public name: string, public desc:string, public urlPath:string, public ingredients:IngredientsModel[]){
+        /* this.name = name;
         this.description=desc;
         this.urlPath = imgPath;
+        this.ingredients =  */
     }
 
 }
