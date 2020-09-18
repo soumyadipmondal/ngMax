@@ -1,11 +1,11 @@
 <!-- Shopping List with Edit-->
 <div class="row">
     <div class="col-lg-10">
-        <app-shopping-edit></app-shopping-edit>
+        <app-shopping-edit [slctdItem] = "selectedIngredient"></app-shopping-edit>
         <hr>
         <ul class="list-group">
-            <li class="list-group-item" *ngFor="let item of ingredientsList">
-              <a href="#">{{item.name}}({{item.amount}})</a>
+            <li class="list-group-item" *ngFor="let item of ingredientsList; let i=index">
+              <a href="#" (click)="onSelectItem(i, item)">{{item.name}}({{item.amount}})</a>
             </li>
         </ul>
     </div>
