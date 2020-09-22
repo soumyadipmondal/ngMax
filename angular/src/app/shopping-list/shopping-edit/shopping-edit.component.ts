@@ -44,5 +44,12 @@ export class ShoppingEditComponent implements OnInit {
     }else{
       this._ingredServ.setIngredientItem(ingData)
     }
+    formData.reset();
+    this.editMode=false;
+  }
+
+  onClear():void{
+    this.ingForm.reset();
+    this.editMode=false;
   }
 }

@@ -5,7 +5,12 @@
         <hr>
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let item of ingredientsList; let i=index">
-              <a href="#" (click)="onSelectItem(i, item)">{{item.name}}({{item.amount}})</a>
+              <!-- <a href="#" (click)="onSelectItem(i, item)">{{item.name}}({{item.amount}})</a> -->
+              {{item.name}}({{item.amount}})
+              <div class="btn-group">
+                <button class="btn btn-primary mx-1" (click)="onSelectItem(i, item)">Update</button>
+                <button class="btn btn-danger mx-1" (click)="onDeleteItem(i)">Delete</button>
+              </div>
             </li>
         </ul>
     </div>

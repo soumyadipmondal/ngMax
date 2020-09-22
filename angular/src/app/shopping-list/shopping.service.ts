@@ -10,6 +10,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class ShoppingService {
   editIngredient = new Subject();
   itemChanged = new Subject();
+  itemError = new Subject();
   set = new Set();
   //Mock data
   private ingredientsList: IngredientsModel[] = [
@@ -40,8 +41,25 @@ export class ShoppingService {
     addIngredients.map(item=>this.setIngredientItem(item));
   }
 
-  updateIngItem(index:number, item: IngredientsModel){
-    this.ingredientsList[index] = item;
+  updateIngItem(index:number, itemUpdated: IngredientsModel){
+    let c=0;
+    this.ingredientsList.map(item =>{
+      if(item.name.toLowerCase() ===  itemUpdated.name.toLowerCase()){
+        c++
+      }
+    });
+    if(c === 0){
+      this.ingredientsList[index] = itemUpdated;
+      
+    }else{
+      this.itemError.next("Item in error");
+      throw new Error('Item is already existed');
+    }
+    this.itemChanged.next([...this.ingredientsList]);
+  }
+
+  deleteItem(index: number){
+    this.ingredientsList.splice(index, 1);
     this.itemChanged.next([...this.ingredientsList]);
   }
 }

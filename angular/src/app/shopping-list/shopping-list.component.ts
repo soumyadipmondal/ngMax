@@ -34,6 +34,10 @@ export class ShoppingListComponent implements OnInit {
     this._ingredServ.editIngredient.next(itemToBeUpdated);
   }
 
+  onDeleteItem(index: number):void{
+    this._ingredServ.deleteItem(index);
+  }
+
   /* onAddedIngredient(data){
     this.ingredientsList.push(data);
   } */
