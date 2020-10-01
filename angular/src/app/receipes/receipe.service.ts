@@ -29,6 +29,10 @@ export class ReceipeService {
     return [...this.receipeslist];
     
   }
+
+  getReceipeByID = (id)=>{
+    return this.receipeslist[id];
+  }
   // Cross-Component communication
   //selectedReceipeItem = new EventEmitter<ReceipeModel>(); /* ..... process 1 */
 

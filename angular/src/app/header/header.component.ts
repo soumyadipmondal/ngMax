@@ -13,9 +13,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSelect(route){
+  /*onSelect(route){
     this.selectedItem = route;
     this.route.emit(route);
-  }
+  }*/
 
 }

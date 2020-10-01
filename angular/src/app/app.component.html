@@ -2,11 +2,20 @@
 <!-- <router-outlet></router-outlet> -->
 
 <!--without routing-->
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col-md-12">
             <app-receipes *ngIf = "feature !== 'shop'"></app-receipes>
             <app-shopping-list *ngIf = "feature === 'shop'"></app-shopping-list>
+        </div>
+    </div>
+</div> -->
+
+<!--with routing-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <router-outlet></router-outlet>
         </div>
     </div>
 </div>

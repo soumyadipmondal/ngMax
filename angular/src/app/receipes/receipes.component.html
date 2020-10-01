@@ -2,15 +2,12 @@
 <div class="row">
     <!--On the left hanbd side Receipe List-->
     <div class="col-lg-6">
-            <app-receipe-list></app-receipe-list>
+      <app-receipe-list></app-receipe-list>
     </div>
 
     <!--On the left hanbd side Receipe Details-->
     <div class="col-lg-6">
-            <app-receipe-detail *ngIf="receipeDetail; else info" [receipeDetail] = receipeDetail></app-receipe-detail>
-            <ng-template #info>
-              <p>Please Select a Receipe</p>
-            </ng-template>
+      <router-outlet></router-outlet>
     </div>
 </div>
 

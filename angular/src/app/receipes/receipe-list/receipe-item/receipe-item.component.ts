@@ -9,15 +9,17 @@ import { ReceipeService } from '../../receipe.service';
 })
 export class ReceipeItemComponent implements OnInit {
   @Input() receipeEl:ReceipeModel;
+  @Input() receipeIndex: number;
   //@Output() sendSelReceipe = new EventEmitter<ReceipeModel>();
   constructor(private _receipeServ: ReceipeService) { }
 
   ngOnInit(): void {
+    //console.log(this.receipeIndex);
   }
 
-  onSelcetReceipe(selctedReceipe : ReceipeModel){
+  /* onSelcetReceipe(selctedReceipe : ReceipeModel){
     //this._receipeServ.selectedReceipeItem.emit(selctedReceipe)
     this._receipeServ.sendSelectedReceipe(selctedReceipe);
-  }
+  } */
 
 }
