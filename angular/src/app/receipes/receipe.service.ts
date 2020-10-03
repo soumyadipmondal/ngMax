@@ -10,6 +10,7 @@ import { ShoppingService } from '../shopping-list/shopping.service';
 })
 export class ReceipeService {
   subject= new Subject();
+  receipeChanged= new Subject();
   //Mock Data
   private receipeslist: ReceipeModel[] = [
     new ReceipeModel('The taste Receipe', 'I love to taste this', '../../../assets/images/receipe1.jpg',[
@@ -25,6 +26,8 @@ export class ReceipeService {
 
   //get Receipe list
   getReceipe = () =>{
+    this.receipeChanged.next([...this.receipeslist]);
+    
     console.log(this.receipeslist);
     return [...this.receipeslist];
     
@@ -54,6 +57,16 @@ export class ReceipeService {
     //console.log(ingredientItem);
     
     this.shoppingServ.addIngredients(ingredientItem);
+  }
+
+  updateReceipe= (index, updatedReceipe) =>{
+    this.receipeslist[index]= updatedReceipe;
+    this.receipeChanged.next([...this.receipeslist]);
+  }
+
+  addReceipe = (newReceipe) =>{
+    this.receipeslist.push(newReceipe);
+    this.receipeChanged.next([...this.receipeslist]);
   }
 
 }
