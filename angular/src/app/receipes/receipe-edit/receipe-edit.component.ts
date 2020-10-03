@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ReceipeService } from '../receipe.service';
@@ -9,13 +9,18 @@ import { ReceipeModel } from '../receipes.model';
   templateUrl: './receipe-edit.component.html',
   styleUrls: ['./receipe-edit.component.scss']
 })
-export class ReceipeEditComponent implements OnInit {
+export class ReceipeEditComponent implements OnInit, AfterViewInit {
+  @ViewChild('editForm', {static: true}) firstFieldSearh: any;
   receipeId: number ;
   isEditing:boolean= false;
 
   receipeForm: FormGroup;
 
-  constructor(private activatedRoute: ActivatedRoute, private receipeService: ReceipeService, private _router: Router) { }
+  constructor(private renderer: Renderer2, 
+    private elemRef: ElementRef,
+    private activatedRoute: ActivatedRoute, 
+    private receipeService: ReceipeService, 
+    private _router: Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.params
@@ -25,6 +30,15 @@ export class ReceipeEditComponent implements OnInit {
           //console.log(this.isEditing)
           this.initReceipeForm();
         })
+  }
+
+  ngAfterViewInit() : void{
+    this.renderer.listen(this.firstFieldSearh.nativeElement, 'focus', ()=>{
+      console.log('focus placed')
+    });
+
+    this.firstFieldSearh.nativeElement.focus();
+    //console.log(this.firstFieldSearh.nativeElement);
   }
 
   private initReceipeForm = () =>{
