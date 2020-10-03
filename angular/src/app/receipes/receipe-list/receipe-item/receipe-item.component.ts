@@ -8,6 +8,7 @@ import { ReceipeService } from '../../receipe.service';
   styleUrls: ['./receipe-item.component.scss']
 })
 export class ReceipeItemComponent implements OnInit {
+  @Output() isClicked= new EventEmitter<boolean>();
   @Input() receipeEl:ReceipeModel;
   @Input() receipeIndex: number;
   //@Output() sendSelReceipe = new EventEmitter<ReceipeModel>();
@@ -21,5 +22,9 @@ export class ReceipeItemComponent implements OnInit {
     //this._receipeServ.selectedReceipeItem.emit(selctedReceipe)
     this._receipeServ.sendSelectedReceipe(selctedReceipe);
   } */
+
+  itemClicked = ()=>{
+    this.isClicked.emit(true);
+  }
 
 }

@@ -14,8 +14,8 @@ export class ShoppingService {
   set = new Set();
   //Mock data
   private ingredientsList: IngredientsModel[] = [
-    new IngredientsModel('Apple', 5),
-    new IngredientsModel('Banana', 10)
+   /*  new IngredientsModel('Apple', 5),
+    new IngredientsModel('Banana', 10) */
   ]
   constructor() { }
 

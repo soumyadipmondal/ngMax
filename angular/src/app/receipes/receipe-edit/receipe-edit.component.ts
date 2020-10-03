@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ReceipeService } from '../receipe.service';
 import { ReceipeModel } from '../receipes.model';
 
@@ -15,7 +15,7 @@ export class ReceipeEditComponent implements OnInit {
 
   receipeForm: FormGroup;
 
-  constructor(private activatedRoute: ActivatedRoute, private receipeService: ReceipeService) { }
+  constructor(private activatedRoute: ActivatedRoute, private receipeService: ReceipeService, private _router: Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.params
@@ -42,8 +42,8 @@ export class ReceipeEditComponent implements OnInit {
         for(let ingredient of fetchedReceipe.ingredients){
           receipeIngredients.push(
             new FormGroup({
-              'ingName' : new FormControl(ingredient.name, Validators.required),
-              'ingAmnt' : new FormControl(ingredient.amount, Validators.required)
+              'name' : new FormControl(ingredient.name, Validators.required),
+              'amount' : new FormControl(ingredient.amount, Validators.required)
             })
           )
         }
@@ -69,8 +69,8 @@ export class ReceipeEditComponent implements OnInit {
   onAddingIngredients= ()=>{
     (<FormArray>this.receipeForm.get('ingredients')).push(
       new FormGroup({
-        'ingName' : new FormControl(null, Validators.required),
-        'ingAmnt' : new FormControl(null, Validators.required)
+        'name' : new FormControl(null, Validators.required),
+        'amount' : new FormControl(null, Validators.required)
       })
     )
   }
@@ -88,6 +88,22 @@ export class ReceipeEditComponent implements OnInit {
     }else{
       this.receipeService.addReceipe(added_updated_receipe);
     }
+
+    this.onChanges();
+  }
+
+  onChanges = ()=>{
+    if(!this.isEditing){
+      this._router.navigate(['../../'], {relativeTo: this.activatedRoute});
+    }else{
+      this._router.navigate(['../../', this.receipeId], {relativeTo: this.activatedRoute})
+    }
+  }
+
+  onRemoveIngredients = (index: number)=>{
+    console.log(index);
+    (<FormArray>this.receipeForm.get('ingredients')).removeAt(index);
+    
   }
 
 }

@@ -22,7 +22,12 @@ export class ReceipeService {
       new IngredientsModel('Ice cream', 10)
     ])
   ];
-  constructor(private shoppingServ: ShoppingService) { }
+  constructor(private shoppingServ: ShoppingService) { 
+    this.receipeslist.map((item : ReceipeModel)=>{
+      let ingredientList: IngredientsModel[] = item.ingredients;
+      this.shoppingServ.addIngredients(ingredientList);
+    })
+  }
 
   //get Receipe list
   getReceipe = () =>{
@@ -61,11 +66,19 @@ export class ReceipeService {
 
   updateReceipe= (index, updatedReceipe) =>{
     this.receipeslist[index]= updatedReceipe;
+    this.addIngredientsToShoppingService(updatedReceipe);
     this.receipeChanged.next([...this.receipeslist]);
   }
 
   addReceipe = (newReceipe) =>{
     this.receipeslist.push(newReceipe);
+    this.addIngredientsToShoppingService(newReceipe);
+    this.receipeChanged.next([...this.receipeslist]);
+  }
+
+  deleteReceipe = (index:number)=>{
+    //this.shoppingServ.deleteItem(index);
+    this.receipeslist.splice(index, 1);
     this.receipeChanged.next([...this.receipeslist]);
   }
 

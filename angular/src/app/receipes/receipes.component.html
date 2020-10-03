@@ -2,13 +2,25 @@
 <div class="row">
     <!--On the left hanbd side Receipe List-->
     <div class="col-lg-6">
-      <app-receipe-list></app-receipe-list>
+      <app-receipe-list (onItemClickedOnList) = "noNeedToshowHeading($event)"></app-receipe-list>
+    </div>
+
+    <div class="col-lg-6" *ngIf = "!isHeadingvisible">
+      <h3>Please Select a Receipe!!</h3>
     </div>
 
     <!--On the left hanbd side Receipe Details-->
-    <div class="col-lg-6">
+    <div class="col-lg-6" *ngIf="isHeadingvisible">
       <router-outlet></router-outlet>
     </div>
 </div>
 
 <!-- (emitReceipe)='onDetailReceipt($event)' -->
+
+<!-- <app-something *ngIf="contd; else someother">
+
+</app-something>
+
+<ng-template #someother>
+
+</ng-template> -->

@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./receipe-list.component.scss']
 })
 export class ReceipeListComponent implements OnInit {
-  /* @Output() emitReceipe = new EventEmitter<ReceipeModel>(); */
+  @Output() onItemClickedOnList = new EventEmitter<boolean>();
   receipeslist: ReceipeModel[];
   constructor(private _receipeServ: ReceipeService, private router : Router, private activatedRoute : ActivatedRoute) { }
 
@@ -31,5 +31,11 @@ export class ReceipeListComponent implements OnInit {
   receipeModify = () =>{
     this.router.navigate(['receipedetails/new'], {relativeTo : this.activatedRoute});
   }
+
+  onItemClick = (data: boolean)=>{
+    this.onItemClickedOnList.emit(data)
+  }
+  
+
 
 }

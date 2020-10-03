@@ -9,7 +9,7 @@ import { ReceipesComponent } from './receipes/receipes.component';
 import { ReceipeEditComponent } from './receipes/receipe-edit/receipe-edit.component';
 
 const routes: Routes = [
-  //{ path: '', redirectTo: '/receipecontainer', pathMatch: 'full' },
+  { path: '', redirectTo: '/receipecontainer', pathMatch: 'full' },
   {
     
     path: 'receipecontainer',
@@ -34,8 +34,6 @@ const routes: Routes = [
         path: 'receipedetails/:id/edit',
         component: ReceipeEditComponent
       }
-      
-      //{ path: '', redirectTo: 'receipelist', pathMatch: 'full' }
     ]
   },
   

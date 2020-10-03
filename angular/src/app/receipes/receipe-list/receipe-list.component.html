@@ -9,6 +9,7 @@
           *ngFor="let receipe of receipeslist; let i=index"
           [receipeEl] = 'receipe'
           [receipeIndex] = 'i'
+          (isClicked) = "onItemClick($event)"
           ></app-receipe-item>
     </div>
 </div>

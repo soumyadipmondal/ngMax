@@ -8,6 +8,7 @@ import { ReceipeService } from './receipe.service';
   styleUrls: ['./receipes.component.scss']
 })
 export class ReceipesComponent implements OnInit {
+  isHeadingvisible:boolean = false;
   receipeDetail: ReceipeModel;
   constructor(private _receipeServ: ReceipeService) { }
 
@@ -26,5 +27,9 @@ export class ReceipesComponent implements OnInit {
     console.log(receipedata);
     this.receipeDetail = receipedata;
   } */
+
+  noNeedToshowHeading = (data) =>{
+    this.isHeadingvisible = data;
+  }
 
 }

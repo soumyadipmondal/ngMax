@@ -18,6 +18,7 @@ export class ReceipeDetailComponent implements OnInit {
 
   ngOnInit(): void {
     //console.log(this.receipeDetail);
+    /* */
     this.activeRoute.params
     .subscribe((param : Params) =>{
       this.receipeCickedID = +param.id;
@@ -32,6 +33,11 @@ export class ReceipeDetailComponent implements OnInit {
 
   editReceipe= ()=>{
     this.router.navigate(['../../receipedetails/'+this.receipeCickedID+'/edit'], {relativeTo: this.activeRoute})
+  }
+
+  onDeleteReceipe = () =>{
+    this._receipeToAdd.deleteReceipe(this.receipeCickedID);
+    this.router.navigate(['../../'], {relativeTo: this.activeRoute})
   }
 
 }
