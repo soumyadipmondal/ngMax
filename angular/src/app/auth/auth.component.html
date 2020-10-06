@@ -1,9 +1,11 @@
+<ng-template DynaComponentPlaceholder></ng-template>
+
 <div class="row">
     <div class="col-lg-12 col-lg-offset-3">
         <div class="errorContainer alert alert-danger" *ngIf="isSeverErr">{{showServerErr}}</div>
-        <div class="loader" *ngIf="isLoading">
+        <!-- <div class="loader" *ngIf="isLoading">
             <app-loader></app-loader>
-        </div>
+        </div> -->
         <form name="authForm" #authForm="ngForm" (ngSubmit)="onAuthSubmit(authForm)" *ngIf="!isLoading">
             <div class="signIn" *ngIf="isLoggedIn">
                 <div class="form-group">

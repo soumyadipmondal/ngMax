@@ -15,6 +15,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { ReceipeEditComponent } from './receipes/receipe-edit/receipe-edit.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoaderComponent } from '../shared/loader/loader.component';
+import { DynaPlaceholderDirective } from 'src/shared/shared-service/shared-directive.directive';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { LoaderComponent } from '../shared/loader/loader.component';
     ReceipeEditComponent,
     AuthComponent,
     LoaderComponent,
+    DynaPlaceholderDirective,
   ],
   imports: [
     BrowserModule,
@@ -40,5 +42,8 @@ import { LoaderComponent } from '../shared/loader/loader.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents:[
+    LoaderComponent
+  ]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-loader',
@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent implements OnInit {
-
+  @Input() message: string
+  @Output() close = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  onClose = ()=>{
+    this.close.emit();
+  }
 }

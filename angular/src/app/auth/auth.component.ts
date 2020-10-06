@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { DynaPlaceholderDirective } from 'src/shared/shared-service/shared-directive.directive';
+import { SharedService } from 'src/shared/shared-service/shared.service';
 import { AuthResponse } from './authenticate.model';
 import { AuthenticateService } from './services/authenticate.service';
 
@@ -15,8 +17,8 @@ export class AuthComponent implements OnInit {
   isLoggedIn = true;
   isLoading = false;
 
-  constructor(private _authService: AuthenticateService) { }
-
+  constructor(private _authService: AuthenticateService, private _loaderServ: SharedService) { }
+  @ViewChild(DynaPlaceholderDirective) placeDir: DynaPlaceholderDirective;
   ngOnInit(): void {
   }
 
@@ -28,6 +30,7 @@ export class AuthComponent implements OnInit {
     let authObs: Observable<AuthResponse>;
     //console.log(data);
     this.isLoading = true;
+    this._loaderServ.showLoader(this.placeDir,'Loading....');
     if(this.isLoggedIn){
       if(!data.valid){
         return;
@@ -42,11 +45,13 @@ export class AuthComponent implements OnInit {
       }
       authObs.subscribe(
         (serverRes:AuthResponse) =>{
-          this.isLoading = false
+          this.isLoading = false;
+          this._loaderServ.hideLoader();
           console.log(serverRes)
         },
         errMessage => {
           console.log(errMessage);
+          this._loaderServ.hideLoader();
           this.isLoading = false
           this.isSeverErr = true
           this.showServerErr= errMessage;
