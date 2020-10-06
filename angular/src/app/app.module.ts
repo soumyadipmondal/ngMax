@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,8 @@ import { ReceipeItemComponent } from './receipes/receipe-list/receipe-item/recei
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ReceipeEditComponent } from './receipes/receipe-edit/receipe-edit.component';
+import { AuthComponent } from './auth/auth.component';
+import { LoaderComponent } from '../shared/loader/loader.component';
 
 
 @NgModule({
@@ -24,15 +27,18 @@ import { ReceipeEditComponent } from './receipes/receipe-edit/receipe-edit.compo
     ReceipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    ReceipeEditComponent
+    ReceipeEditComponent,
+    AuthComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

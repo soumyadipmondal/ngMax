@@ -7,6 +7,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ReceipeDetailComponent } from './receipes/receipe-detail/receipe-detail.component';
 import { ReceipesComponent } from './receipes/receipes.component';
 import { ReceipeEditComponent } from './receipes/receipe-edit/receipe-edit.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/receipecontainer', pathMatch: 'full' },
@@ -41,6 +42,12 @@ const routes: Routes = [
     path: 'shop',
     component: ShoppingListComponent,
   },
+
+  {
+    path: 'auth',
+    component: AuthComponent,
+  },
+  
   
 ];
 
