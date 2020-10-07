@@ -28,7 +28,7 @@ export class AuthComponent implements OnInit {
       const custErrElem = createCustomElement(ErrorComponent, {injector});
       customElements.define('cust-err', custErrElem);
 
-      this.content = domSanitizer.bypassSecurityTrustHtml('<cust-err err=Advertisement></cust-err>')
+      this.content = domSanitizer.bypassSecurityTrustHtml('<cust-err err=Advertisement: Please Login></cust-err>')
 
     }
   @ViewChild(DynaPlaceholderDirective) placeDir: DynaPlaceholderDirective;
