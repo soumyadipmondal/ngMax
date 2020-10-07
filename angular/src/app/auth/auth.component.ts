@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { NgForm } from '@angular/forms';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { ErrorComponent } from 'src/shared/error/error.component';
 import { DynaPlaceholderDirective } from 'src/shared/shared-service/shared-directive.directive';
 import { SharedService } from 'src/shared/shared-service/shared.service';
 import { AuthResponse } from './authenticate.model';
@@ -12,12 +15,22 @@ import { AuthenticateService } from './services/authenticate.service';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-  showServerErr:string;
+  content:SafeHtml= null
+  showServerErr:string='';
   isSeverErr:boolean = false;
   isLoggedIn = true;
   isLoading = false;
 
-  constructor(private _authService: AuthenticateService, private _loaderServ: SharedService) { }
+  constructor(private _authService: AuthenticateService, 
+    private _loaderServ: SharedService, 
+    injector: Injector,
+    domSanitizer: DomSanitizer) { 
+      const custErrElem = createCustomElement(ErrorComponent, {injector});
+      customElements.define('cust-err', custErrElem);
+
+      this.content = domSanitizer.bypassSecurityTrustHtml('<cust-err err=Advertisement></cust-err>')
+
+    }
   @ViewChild(DynaPlaceholderDirective) placeDir: DynaPlaceholderDirective;
   ngOnInit(): void {
   }
@@ -28,9 +41,9 @@ export class AuthComponent implements OnInit {
 
   onAuthSubmit = (data : NgForm)=>{
     let authObs: Observable<AuthResponse>;
-    //console.log(data);
     this.isLoading = true;
-    this._loaderServ.showLoader(this.placeDir,'Loading....');
+    this._loaderServ.showLoader(this.placeDir,'Loading....'); //creating load component dynamically
+
     if(this.isLoggedIn){
       if(!data.valid){
         return;
@@ -50,7 +63,8 @@ export class AuthComponent implements OnInit {
           console.log(serverRes)
         },
         errMessage => {
-          console.log(errMessage);
+          //console.log(errMessage);
+          this
           this._loaderServ.hideLoader();
           this.isLoading = false
           this.isSeverErr = true

@@ -2,6 +2,9 @@
 
 <div class="row">
     <div class="col-lg-12 col-lg-offset-3">
+        <!-- Crearing app-error component dynamically 
+        <app-error *ngIf="isSeverErr" [errMsg] = "showServerErr"></app-error> -->
+        <div  [innerHTML] = "content"></div>
         <div class="errorContainer alert alert-danger" *ngIf="isSeverErr">{{showServerErr}}</div>
         <!-- <div class="loader" *ngIf="isLoading">
             <app-loader></app-loader>

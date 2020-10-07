@@ -16,6 +16,7 @@ import { ReceipeEditComponent } from './receipes/receipe-edit/receipe-edit.compo
 import { AuthComponent } from './auth/auth.component';
 import { LoaderComponent } from '../shared/loader/loader.component';
 import { DynaPlaceholderDirective } from 'src/shared/shared-service/shared-directive.directive';
+import { ErrorComponent } from '../shared/error/error.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { DynaPlaceholderDirective } from 'src/shared/shared-service/shared-direc
     AuthComponent,
     LoaderComponent,
     DynaPlaceholderDirective,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { DynaPlaceholderDirective } from 'src/shared/shared-service/shared-direc
   providers: [],
   bootstrap: [AppComponent],
   entryComponents:[
-    LoaderComponent
+    LoaderComponent, 
+    ErrorComponent
   ]
 })
 export class AppModule { }
