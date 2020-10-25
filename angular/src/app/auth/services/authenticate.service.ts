@@ -6,6 +6,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthResponse } from '../authenticate.model';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class AuthenticateService {
   constructor(private _http: HttpClient) { }
 
   signupForm = (formData: NgForm)=>{
-    return this._http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBd7lTyTeU4DqqLXBQ3v51LUgwYUZIDkwY', {
+    return this._http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+environment.firebaseAPI, {
         email: formData.value.email_signup,
         password: formData.value.pwd_signup,
         returnSecureToken:true
@@ -24,7 +25,7 @@ export class AuthenticateService {
   };
 
   loginForm = (formData: NgForm)=>{
-    return this._http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBd7lTyTeU4DqqLXBQ3v51LUgwYUZIDkwY',{
+    return this._http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+environment.firebaseAPI,{
       email: formData.value.email,
       password: formData.value.pwd,
       returnSecureToken:true
