@@ -1,4 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, 
+         EventEmitter, 
+         Input, 
+         OnInit, 
+         Output } from '@angular/core';
 
 @Component({
   selector: 'app-loader',
